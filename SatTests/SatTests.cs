@@ -15,7 +15,7 @@
             var path = @"TestFiles/uf75-01.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("SAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(true));
         }
 
         [Test]
@@ -24,7 +24,7 @@
             var path = @"TestFiles/uf75-02.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("SAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(true));
         }
 
         [Test]
@@ -33,7 +33,7 @@
             var path = @"TestFiles/uf75-03.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("SAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(true));
         }
 
         [Test]
@@ -42,7 +42,7 @@
             var path = @"TestFiles/uf75-04.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("SAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(true));
         }
 
         [Test]
@@ -51,7 +51,7 @@
             var path = @"TestFiles/uf75-05.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("SAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(true));
         }
 
         [Test]
@@ -60,7 +60,7 @@
             var path = @"TestFiles/uf75-06.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("SAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(true));
         }
 
         [Test]
@@ -69,7 +69,7 @@
             var path = @"TestFiles/uf75-07.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("SAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(true));
         }
 
         [Test]
@@ -78,7 +78,7 @@
             var path = @"TestFiles/uf75-08.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("SAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(true));
         }
 
         [Test]
@@ -87,7 +87,7 @@
             var path = @"TestFiles/uf75-09.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("SAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(true));
         }
 
         [Test]
@@ -96,7 +96,7 @@
             var path = @"TestFiles/uf75-010.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("SAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(true));
         }
 
         [Test]
@@ -105,7 +105,7 @@
             var path = @"TestFiles/aim-50-1_6-no-1.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("UNSAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(false));
         }
 
         [Test]
@@ -114,7 +114,7 @@
             var path = @"TestFiles/aim-50-1_6-no-2.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("UNSAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(false));
         }
 
         [Test]
@@ -123,7 +123,7 @@
             var path = @"TestFiles/aim-50-1_6-no-3.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("UNSAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(false));
         }
 
         [Test]
@@ -132,7 +132,7 @@
             var path = @"TestFiles/aim-50-1_6-no-4.cnf";
             var actual = SATSolver.Solve(path);
 
-            Assert.That(actual, Is.EqualTo("UNSAT"));
+            Assert.That(actual.SatOrNot, Is.EqualTo(false));
         }
 
     }
