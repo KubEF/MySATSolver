@@ -11,7 +11,7 @@
 ```c#
 var path = @"example.cnf";
 SatAnswer ans = SATSolver.Solve(path);
-// Ответ, если true, то "SAT", иначе -- "UNSAT"
+// Ответ. Если "SAT", то true, если "UNSAT", то false
 bool sat = ans.SatOrNot;
 // Список литералов, которые решают данную формулу. Пустой, если sat == false
 List<int> solution = ans.Solution;
