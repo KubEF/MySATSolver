@@ -22,7 +22,7 @@ namespace SATSolver
             solution ??= new List<int>();
 
             // Check
-            if (clauses.Any(clause => clause.Count == 0)) return new SatAnswer(false, new List<int>());
+            if (clauses.Any(clause => clause.Count == 0)) return new SatAnswer(false, null);
 
             if (clauses.Count == 0) return new SatAnswer(true, solution);
 
@@ -37,7 +37,7 @@ namespace SATSolver
             solution.AddRange(unitLiterals);
 
             // Check
-            if (clauses.Any(clause => clause.Count == 0)) return new SatAnswer(false, new List<int>());
+            if (clauses.Any(clause => clause.Count == 0)) return new SatAnswer(false, null);
 
             if (clauses.Count == 0) return new SatAnswer(true, solution);
 
@@ -47,7 +47,7 @@ namespace SATSolver
             solution.AddRange(pureLiterals);
 
             // Check
-            if (clauses.Any(clause => clause.Count == 0)) return new SatAnswer(false, new List<int>());
+            if (clauses.Any(clause => clause.Count == 0)) return new SatAnswer(false, null);
 
             if (clauses.Count == 0) return new SatAnswer(true, solution);
 
@@ -57,31 +57,34 @@ namespace SATSolver
             clauses.ForEach(clause => clausesAddLeft.Add(clause.ToList()));
             clausesAddLeft.Add(new List<int> { chosenLiteral });
             var solutionLeft = solution.ToList();
-            if (DPLL(clausesAddLeft, solutionLeft).SatOrNot)
+            var res1 = DPLL(clausesAddLeft, solutionLeft);
+            if (res1.SatOrNot)
             {
-                return new SatAnswer(true, solution);
+                return res1;
             }
 
             var clausesAddRight = new List<List<int>>();
             clauses.ForEach(clause => clausesAddRight.Add(clause.ToList()));
             clausesAddRight.Add(new List<int> { -chosenLiteral });
             var solutionRight = solution.ToList();
-            if (DPLL(clausesAddRight, solutionRight).SatOrNot)
+            var res2 = DPLL(clausesAddRight, solutionRight);
+            if (res2.SatOrNot)
             {
-                return new SatAnswer(true, solution);
+                return res2;
             }
 
-            return new SatAnswer(false, new List<int>());
+            return new SatAnswer(false, null);
         }
 
         private static List<List<int>> ParseDimacs(string dimacsFile)
         {
             List<List<int>> clauses = new List<List<int>>();
-            var dimacsArray = dimacsFile.Split('\n');
+            var dimacsArray = dimacsFile.Trim().Split('\n');
             clauses = new List<List<int>>();
             foreach (var line in dimacsArray)
             {
-                if (line[0] != 'c' && line[0] != 'p') clauses.Add(line.Split(' ').Where(c => c != string.Empty && c != "0").Select(int.Parse).ToList());
+                if (line != string.Empty && line[0] != 'c' && line[0] != 'p')
+                    clauses.Add(line.Split(' ').Where(c => c != string.Empty && c != "0").Select(int.Parse).ToList());
             }
 
             return clauses;

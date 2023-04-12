@@ -2,7 +2,7 @@
 {
     public class SatAnswer
     {
-        public List<int> Solution;
+        public List<int>? Solution;
         public bool SatOrNot;
 
         public SatAnswer(bool sat, List<int> solution)
