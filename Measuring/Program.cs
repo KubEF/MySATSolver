@@ -22,7 +22,7 @@
                     Path.Combine(fullPath, "uf75-03.cnf"),
                     Path.Combine(fullPath, "uf75-04.cnf"),
             };
-            for (int i = 0; i < 40; i++)
+            for (int i = 0; i < 100; i++)
             {
                 timer.Restart();
                 foreach (var file in arrayOfFiles)
@@ -31,7 +31,7 @@
                 }
 
                 timer.Stop();
-                Console.WriteLine(timer.ElapsedMilliseconds);
+                if (i > 59) Console.WriteLine(timer.ElapsedMilliseconds);
             }
 
             Console.ReadLine();

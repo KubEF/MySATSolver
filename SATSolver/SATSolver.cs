@@ -39,7 +39,7 @@ namespace SATSolver
             // Check
             if (clauses.Any(clause => clause.Count == 0)) return new SatAnswer(false, null);
 
-            if (clauses.Count == 0) return new SatAnswer(true, solution);
+            if (clauses.Count == 0) return new SatAnswer(true, solution.Distinct().ToList());
 
             // Pure literal assign
             var pureLiterals = clauses.SelectMany(c => c).Distinct().GroupBy(l => Math.Abs(l)).Where(g => g.Count() == 1).SelectMany(g => g).ToList();
@@ -49,7 +49,7 @@ namespace SATSolver
             // Check
             if (clauses.Any(clause => clause.Count == 0)) return new SatAnswer(false, null);
 
-            if (clauses.Count == 0) return new SatAnswer(true, solution);
+            if (clauses.Count == 0) return new SatAnswer(true, solution.Distinct().ToList());
 
             // Choose iteral and split
             var chosenLiteral = clauses.FirstOrDefault().FirstOrDefault();
@@ -60,6 +60,7 @@ namespace SATSolver
             var res1 = DPLL(clausesAddLeft, solutionLeft);
             if (res1.SatOrNot)
             {
+                res1.Solution = res1.Solution.Distinct().ToList();
                 return res1;
             }
 
@@ -70,6 +71,7 @@ namespace SATSolver
             var res2 = DPLL(clausesAddRight, solutionRight);
             if (res2.SatOrNot)
             {
+                res2.Solution = res2.Solution.Distinct().ToList();
                 return res2;
             }
 
